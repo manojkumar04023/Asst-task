@@ -1,0 +1,8 @@
+/* Add this section for styling error messages */
+.error-message {
+    color: #e74c3c;
+    margin-top: 5px;
+}
+
+/* Rest of the existing styles */
+/* ... */
