@@ -1,0 +1,42 @@
+function validateAndSubmit() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const loginType = document.querySelector('input[name="loginType"]:checked').value;
+
+    // Simple email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showError('Invalid email address');
+        return;
+    }
+
+    // Password length validation
+    if (password.length < 8) {
+        showError('Password must be at least 8 characters long');
+        return;
+    }
+
+    // Password match validation
+    if (password !== confirmPassword) {
+        showError('Passwords do not match');
+        return;
+    }
+
+    // All validations passed, proceed with signup logic
+    console.log(`Name: ${name}`);
+    console.log(`Email: ${email}`);
+    console.log(`Password: ${password}`);
+    console.log(`Login Type: ${loginType}`);
+    // Add your signup logic here
+}
+
+function showError(message) {
+    const errorMessageElement = document.createElement('div');
+    errorMessageElement.className = 'error-message';
+    errorMessageElement.textContent = message;
+
+    const form = document.getElementById('signupForm');
+    form.appendChild(errorMessageElement);
+}
